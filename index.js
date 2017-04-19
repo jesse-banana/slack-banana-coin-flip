@@ -48,7 +48,25 @@ app.use(express.static('public'));
 // view an app
 //
 app.post('/', function( req, res ) {
-  res.status( 200 ).send( "http://www.marshu.com/articles/images-website/articles/presidents-on-coins/half-dollar-coin-head.jpg" );
+
+  var fallbackText = 'Heads';
+  var url = 'https://banana-transfer.s3.amazonaws.com/heads.png'
+
+  if( Math.random() <= 0.5 ) {
+    fallbackText = 'Tails';
+    url = 'http://banana-transfer.s3.amazonaws.com/tails.png';
+  }
+
+  res.status( 200 ).send( JSON.stringify( {
+    attachments: [
+        {
+            fallback: fallbackText,
+            color: "#36a64f",
+            pretext: "A coin was flipped",
+            image_url: url
+        }
+    ]
+  } ) );
 } );
 
 //
