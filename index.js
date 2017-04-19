@@ -57,7 +57,7 @@ app.post('/', function( req, res ) {
     url = 'http://banana-transfer.s3.amazonaws.com/tails.png';
   }
 
-  res.status( 200 ).send( JSON.stringify( {
+  res.status( 200 ).send( {
     text: "A coin was flipped.",
     attachments: [
         {
@@ -65,7 +65,7 @@ app.post('/', function( req, res ) {
             image_url: url
         }
     ]
-  } ) );
+  } );
 } );
 
 //
