@@ -1,0 +1,26 @@
+{
+  "name": "slack-coin-flip",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/x/x"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "basic-auth": "~1.0.x",
+    "body-parser": "~1.15.x",
+    "ejs": "~2.4.x",
+    "express": "~4.13.x",
+    "method-override": "^2.3.6",
+    "moment": "^2.15.1",
+    "underscore": "1.8.x"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=4.1"
+  }
+}
