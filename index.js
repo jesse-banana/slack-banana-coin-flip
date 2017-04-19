@@ -48,9 +48,7 @@ app.use(express.static('public'));
 // view an app
 //
 app.post('/', function( req, res ) {
-  res.status( 200 ).send( JSON.stringify( {
-    hello: "yes"
-  } ) );
+  res.status( 200 ).send( "http://www.marshu.com/articles/images-website/articles/presidents-on-coins/half-dollar-coin-head.jpg" );
 } );
 
 //
