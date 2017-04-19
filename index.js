@@ -58,11 +58,10 @@ app.post('/', function( req, res ) {
   }
 
   res.status( 200 ).send( JSON.stringify( {
+    text: "A coin was flipped.",
     attachments: [
         {
             fallback: fallbackText,
-            color: "#36a64f",
-            pretext: "A coin was flipped",
             image_url: url
         }
     ]
