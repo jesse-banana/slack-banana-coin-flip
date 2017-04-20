@@ -41,10 +41,7 @@ app.get('/oauth', function(req, res) {
   }
 });
 
-//
-// view an app
-//
-app.post('/', function( req, res ) {
+app.post('/flip', function( req, res ) {
 
   var fallbackText = 'Heads';
   var url = 'https://banana-transfer.s3.amazonaws.com/heads.png'
@@ -56,12 +53,10 @@ app.post('/', function( req, res ) {
 
   res.status( 200 ).send( {
     text: "A coin was flipped.",
-    attachments: [
-        {
-            fallback: fallbackText,
-            image_url: url
-        }
-    ]
+    attachments: [{
+      fallback: fallbackText,
+      image_url: url
+    }]
   } );
 } );
 
