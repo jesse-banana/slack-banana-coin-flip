@@ -52,7 +52,7 @@ app.post('/flip', function( req, res ) {
   }
 
   res.status( 200 ).send( {
-    text: req.params.user_name + "Flipped a coin.",
+    text: req.query.user_name + " flipped a coin.",
     response_type: "in_channel",
     attachments: [{
       fallback: fallbackText,
