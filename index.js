@@ -52,7 +52,8 @@ app.post('/flip', function( req, res ) {
   }
 
   res.status( 200 ).send( {
-    text: "A coin was flipped.",
+    text: req.params.user_name + "Flipped a coin.",
+    response_type: "in_channel",
     attachments: [{
       fallback: fallbackText,
       image_url: url
@@ -66,5 +67,5 @@ app.post('/flip', function( req, res ) {
 var port = process.env.PORT || 5000;
 var httpServer = http.createServer( app );
 httpServer.listen( port, function( ) {
-  console.log( 'parse-server running on port ' + port + '...' );
+  console.log( 'Running on port ' + port + '...' );
 } );
