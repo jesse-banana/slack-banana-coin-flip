@@ -60,7 +60,8 @@ app.post('/flip', function( req, res ) {
 
     request({
       url: req.body.response_url,
-      contentType: 'application/json'
+      contentType: 'application/json',
+      method: 'POST',
       form: {
         text: message,
         response_type: "in_channel",
@@ -68,8 +69,7 @@ app.post('/flip', function( req, res ) {
           fallback: fallbackText,
           image_url: url
         }]
-      },
-      method: 'POST'
+      }      
     });
   }
 } );
