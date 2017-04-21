@@ -54,7 +54,7 @@ app.post('/flip', function( req, res ) {
       url = 'http://banana-transfer.s3.amazonaws.com/tails.png';
     }
 
-    var message = req.body.user_name + " flipped a coin. Heads means " + req.body.text;
+    var message = req.body.user_name + " flipped a coin... " + req.body.text;
 
     res.status( 200 ).send( {
       text: message,
