@@ -60,8 +60,7 @@ app.post('/flip', function( req, res ) {
 
     request.post({
       url: req.body.response_url,
-      contentType: 'application/json',
-      form: {
+      json: {
         text: message,
         response_type: "in_channel",
         attachments: [{
