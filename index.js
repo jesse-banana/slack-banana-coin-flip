@@ -51,8 +51,10 @@ app.post('/flip', function( req, res ) {
     url = 'http://banana-transfer.s3.amazonaws.com/tails.png';
   }
 
+  var message = req.body.user_name + " flipped a coin. Heads means " + req.body.text;
+
   res.status( 200 ).send( {
-    text: req.body.user_name + " flipped a coin.",
+    text: message,
     response_type: "in_channel",
     attachments: [{
       fallback: fallbackText,
