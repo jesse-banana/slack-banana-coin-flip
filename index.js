@@ -44,7 +44,7 @@ app.get('/oauth', function(req, res) {
 app.post('/flip', function( req, res ) {
 
   if( req.body.token != process.env.TOKEN ) {
-    res.status(500).send();
+    res.status(500).end();
   } else {
     var fallbackText = 'Heads';
     var url = 'https://banana-transfer.s3.amazonaws.com/heads.png'
@@ -56,12 +56,11 @@ app.post('/flip', function( req, res ) {
 
     var message = req.body.user_name + " flipped a coin... " + req.body.text;
 
-    res.status( 200 ).send();
+    res.status( 200 ).end();
 
-    request({
+    request.post({
       url: req.body.response_url,
       contentType: 'application/json',
-      method: 'POST',
       form: {
         text: message,
         response_type: "in_channel",
