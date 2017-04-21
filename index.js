@@ -43,24 +43,28 @@ app.get('/oauth', function(req, res) {
 
 app.post('/flip', function( req, res ) {
 
-  var fallbackText = 'Heads';
-  var url = 'https://banana-transfer.s3.amazonaws.com/heads.png'
+  if( req.body.token != process.env.TOKEN ) {
+    res.status(500).send();
+  } else {
+    var fallbackText = 'Heads';
+    var url = 'https://banana-transfer.s3.amazonaws.com/heads.png'
 
-  if( Math.random() <= 0.5 ) {
-    fallbackText = 'Tails';
-    url = 'http://banana-transfer.s3.amazonaws.com/tails.png';
+    if( Math.random() <= 0.5 ) {
+      fallbackText = 'Tails';
+      url = 'http://banana-transfer.s3.amazonaws.com/tails.png';
+    }
+
+    var message = req.body.user_name + " flipped a coin. Heads means " + req.body.text;
+
+    res.status( 200 ).send( {
+      text: message,
+      response_type: "in_channel",
+      attachments: [{
+        fallback: fallbackText,
+        image_url: url
+      }]
+    } );
   }
-
-  var message = req.body.user_name + " flipped a coin. Heads means " + req.body.text;
-
-  res.status( 200 ).send( {
-    text: message,
-    response_type: "in_channel",
-    attachments: [{
-      fallback: fallbackText,
-      image_url: url
-    }]
-  } );
 } );
 
 //
