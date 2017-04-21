@@ -56,14 +56,20 @@ app.post('/flip', function( req, res ) {
 
     var message = req.body.user_name + " flipped a coin... " + req.body.text;
 
-    res.status( 200 ).send( {
-      text: message,
-      response_type: "in_channel",
-      attachments: [{
-        fallback: fallbackText,
-        image_url: url
-      }]
-    } );
+    res.status( 200 ).send();
+
+    request({
+      url: req.body.response_url,
+      qs: {
+        text: message,
+        response_type: "in_channel",
+        attachments: [{
+          fallback: fallbackText,
+          image_url: url
+        }]
+      },
+      method: 'POST'
+    });
   }
 } );
 
